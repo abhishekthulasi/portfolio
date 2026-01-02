@@ -17,7 +17,7 @@ export const projects: Project[] = [
         tagline: 'Your Storage. Your Limits.',
         problem: 'Cloud storage offers convenience at the cost of recurring fees, internet dependency, and privacy trade-offs. It leaves local hardware underutilized.',
         solution: 'A local-first synchronization engine that bridges devices directly over Wi-Fi. I utilized Rust for backend and Flutter for frontend, ensuring all platform compatibility, native speed and indendependent of internet.',
-        tech: ['Rust', 'Flutter', 'Systems Programming'],
+        tech: ['Cross Platform', 'Rust', 'Flutter'],
         tier: 'Systems',
         links: [{ label: 'View Code', url: 'https://github.com/abhishekthulasi/localsync' }]
     },
@@ -38,7 +38,7 @@ export const projects: Project[] = [
         tagline: 'Abstracting Complexity.',
         problem: 'Standard Salesforce REST APIs are rigid. Building custom endpoints for every object is repetitive and creates unnecessary complexity.',
         solution: 'A flexible architecture that accepts any object type and adapts its logic dynamically. It allows dynamic injection of custom logic (Apex) before or after upsertion without changing the API contract. Simple on the surface, complex under the hood.',
-        tech: ['Apex', 'Enterprise Architecture', 'Design Patterns'],
+        tech: ['Design Patterns', 'Apex'],
         tier: 'Systems',
         links: [{ label: 'View Architecture', url: 'https://github.com/abhishekthulasi/salesforce-generic-rest-api' }]
     },
@@ -50,7 +50,7 @@ export const projects: Project[] = [
         tagline: 'Engineering for 1 Million Users.',
         problem: 'Managing a fragmented workforce of contractors across a massive geographic area is operationally chaotic.',
         solution: 'Lead Developer for India\'s largest adhesive manufacturer\'s contractor app. Engineered the mobile ecosystem that handles daily operations for over 1 million active users. Learned the discipline of scale.',
-        tech: ['Mobile Enterprise', 'Scalable Architecture', 'CI/CD'],
+        tech: ['Flutter Mobile', 'Scalable Architecture', 'CI/CD'],
         tier: 'Scale',
         links: []
     },
@@ -82,7 +82,7 @@ export const projects: Project[] = [
         tagline: 'Respecting Your Time.',
         problem: 'I was bored and wanted to solve a minor annoyance. I noticed that legally, ads must admit they are ads by showing a timer.',
         solution: 'A simple chrome extension that looks for this undeniable, legally required ad pattern. When it detects the timer, it fast-forwards playback. A selfish, simple tool that just works.',
-        tech: ['JavaScript', 'DOM Manipulation', 'Heuristics'],
+        tech: ['DOM Manipulation', 'Chrome Extension'],
         tier: 'Tools',
         links: [{ label: 'View Source', url: 'https://github.com/abhishekthulasi/prime-video-ad-accelerator' }]
     },
@@ -92,7 +92,7 @@ export const projects: Project[] = [
         tagline: 'Fixing the Standard UI.',
         problem: 'The standard Salesforce Lightning combobox lacked search and multi-select, forcing developers to build hacky workarounds.',
         solution: 'An open-source, reusable LWC component that fills the gap. Now a community standard for developers needing better form controls.',
-        tech: ['LWC', 'JavaScript', 'Open Source'],
+        tech: ['LWC', 'JavaScript', 'Ease of Use'],
         tier: 'Tools',
         links: [{ label: 'View Demo', url: '#' }] // Add LinkedIn link here
     }

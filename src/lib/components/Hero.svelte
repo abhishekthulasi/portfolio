@@ -1,4 +1,4 @@
-<section class="py-20 sm:py-32">
+<section class="pt-20 pb-10 sm:pt-32 sm:pb-16">
     <div class="space-y-8">
         <div class="space-y-2">
             <h1
@@ -17,7 +17,7 @@
             <p
                 class="text-xl sm:text-2xl font-medium text-black dark:text-white leading-snug"
             >
-                I solve problems by absorbing the complexity of engineering to
+                I solve problems by embracing the complexity of engineering to
                 deliver simplicity in experience.
             </p>
 

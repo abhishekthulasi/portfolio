@@ -28,7 +28,7 @@
                 {#each filters as filter}
                     <button
                         onclick={() => (activeFilter = filter)}
-                        class="px-4 py-1.5 rounded-full text-sm font-medium transition-all whitespace-nowrap
+                        class="cursor-pointer px-4 py-2 rounded-2xl text-sm font-medium transition-all whitespace-nowrap
              {activeFilter === filter
                             ? 'bg-black text-white dark:bg-white dark:text-black'
                             : 'bg-gray-100 text-gray-600 hover:bg-gray-200 dark:bg-gray-900 dark:text-gray-400 dark:hover:bg-gray-800'}"
@@ -39,16 +39,10 @@
             </div>
         </div>
 
-        <div class="space-y-2 min-h-[50vh]">
+        <div>
             {#each filteredProjects as project (project.id)}
                 <ProjectCard {project} />
             {/each}
-
-            {#if filteredProjects.length === 0}
-                <div class="py-20 text-center text-gray-400">
-                    No projects found in this category.
-                </div>
-            {/if}
         </div>
 
         <AstuteSection />
