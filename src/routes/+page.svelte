@@ -4,16 +4,15 @@
     import AstuteSection from "$lib/components/AstuteSection.svelte";
     import { projects } from "$lib/data";
 
-    // Filtering Logic
-    let activeFilter: "All" | "Systems" | "Scale" | "Tools" = "All";
+    const filters = ["All", "Systems", "Scale", "Tools"] as const;
 
-    // Reactive statement to filter projects instantly
-    $: filteredProjects =
+    let activeFilter = $state<"All" | "Systems" | "Scale" | "Tools">("All");
+
+    let filteredProjects = $derived(
         activeFilter === "All"
             ? projects
-            : projects.filter((p) => p.tier === activeFilter);
-
-    const filters = ["All", "Systems", "Scale", "Tools"] as const;
+            : projects.filter((p) => p.tier === activeFilter),
+    );
 </script>
 
 <div
@@ -28,9 +27,9 @@
             <div class="flex gap-2 overflow-x-auto no-scrollbar">
                 {#each filters as filter}
                     <button
-                        on:click={() => (activeFilter = filter)}
+                        onclick={() => (activeFilter = filter)}
                         class="px-4 py-1.5 rounded-full text-sm font-medium transition-all whitespace-nowrap
-            {activeFilter === filter
+             {activeFilter === filter
                             ? 'bg-black text-white dark:bg-white dark:text-black'
                             : 'bg-gray-100 text-gray-600 hover:bg-gray-200 dark:bg-gray-900 dark:text-gray-400 dark:hover:bg-gray-800'}"
                     >

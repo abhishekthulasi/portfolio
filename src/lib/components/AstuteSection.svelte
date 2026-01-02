@@ -1,8 +1,5 @@
-<script lang="ts">
-</script>
-
 <section
-    class="py-24 border-t border-gray-200 dark:border-gray-800 mt-12 bg-gray-50 dark:bg-gray-900/30 -mx-4 px-4 sm:-mx-8 sm:px-8"
+    class="py-24 rounded-xl border-gray-200 dark:border-gray-800 mt-12 bg-gray-50 dark:bg-gray-900/30 -mx-4 px-4 sm:-mx-8 sm:px-8"
 >
     <div class="max-w-2xl mx-auto text-center space-y-8">
         <span class="text-xs font-bold tracking-widest uppercase text-gray-400">
@@ -45,8 +42,10 @@
                         stroke-width="2"
                         stroke-linecap="round"
                         stroke-linejoin="round"
-                        ><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg
+                        aria-hidden="true"
                     >
+                        <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
+                    </svg>
                 </a>
             </div>
         </div>

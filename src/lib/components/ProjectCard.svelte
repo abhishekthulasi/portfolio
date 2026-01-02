@@ -1,42 +1,46 @@
 <script lang="ts">
     import type { Project } from "$lib/data";
 
-    export let project: Project;
+    let { project }: { project: Project } = $props();
 
-    let isOpen = false;
+    let isOpen = $state(false);
 
     function toggle() {
         isOpen = !isOpen;
     }
 </script>
 
-<button
-    on:click={toggle}
-    class="w-full text-left group relative border-b border-gray-200 dark:border-gray-800 py-8 transition-colors hover:bg-gray-50 dark:hover:bg-gray-900/50 focus:outline-none"
-    aria-expanded={isOpen}
+<article
+    class="p-4 border-b border-gray-200 dark:border-gray-800 transition-colors hover:bg-gray-50 dark:hover:bg-gray-900/50"
 >
-    <div class="flex justify-between items-baseline">
-        <div class="space-y-1">
-            <h3
-                class="text-xl font-bold text-black dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors"
-            >
-                {project.title}
-            </h3>
-            <p class="text-gray-500 dark:text-gray-400 font-mono text-sm">
-                {project.tagline}
-            </p>
-        </div>
-
-        <div class="hidden sm:flex gap-2">
-            {#each project.tech as t}
-                <span
-                    class="text-xs bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 px-2 py-1 rounded"
+    <button
+        onclick={toggle}
+        class="w-full text-left group relative py-8 focus:outline-none cursor-pointer"
+        aria-expanded={isOpen}
+    >
+        <div class="flex justify-between items-baseline">
+            <div class="space-y-1">
+                <h3
+                    class="text-xl font-bold text-black dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors"
                 >
-                    {t}
-                </span>
-            {/each}
+                    {project.title}
+                </h3>
+                <p class="text-gray-500 dark:text-gray-400 font-mono text-sm">
+                    {project.tagline}
+                </p>
+            </div>
+
+            <div class="hidden sm:flex gap-2">
+                {#each project.tech as t}
+                    <span
+                        class="text-xs bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 px-2 py-1 rounded"
+                    >
+                        {t}
+                    </span>
+                {/each}
+            </div>
         </div>
-    </div>
+    </button>
 
     <div
         class="grid transition-all duration-300 ease-in-out overflow-hidden"
@@ -46,7 +50,7 @@
             class="min-h-0 opacity-0 transition-opacity duration-300 delay-75"
             class:opacity-100={isOpen}
         >
-            <div class="pt-6 pb-2 sm:grid sm:grid-cols-12 gap-8">
+            <div class="pb-8 sm:grid sm:grid-cols-12 gap-8">
                 <div class="sm:col-span-5 mb-4 sm:mb-0">
                     <h4
                         class="text-xs uppercase tracking-wider text-gray-400 mb-2"
@@ -79,7 +83,6 @@
                                     href={link.url}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    on:click|stopPropagation
                                     class="text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline decoration-2 underline-offset-4"
                                 >
                                     {link.label} →
@@ -91,4 +94,4 @@
             </div>
         </div>
     </div>
-</button>
+</article>
