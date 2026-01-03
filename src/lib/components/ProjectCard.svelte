@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { slide } from "svelte/transition";
     import type { Project } from "$lib/data";
     import Icon from "./Icon.svelte";
 
@@ -74,7 +75,7 @@
     </button>
 
     {#if isOpen}
-        <div id={contentId}>
+        <div id={contentId} transition:slide={{ duration: 300, axis: "y" }}>
             <div class="px-5 pb-6 pt-0">
                 <div
                     class="h-px w-full bg-gray-200 dark:bg-gray-800 mb-6"
