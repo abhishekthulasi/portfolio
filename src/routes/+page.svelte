@@ -7,8 +7,9 @@
     const filters = ["All", "Systems", "Scale", "Tools"] as const;
 
     let activeFilter = $state<"All" | "Systems" | "Scale" | "Tools">("All");
-
     let openProjectIds = $state(new Set<string>());
+
+    let scrollAnchor = $state<HTMLElement>();
 
     let filteredProjects = $derived(
         activeFilter === "All"
@@ -16,22 +17,37 @@
             : projects.filter((p) => p.tier === activeFilter),
     );
 
+    $effect(() => {
+        activeFilter;
+
+        if (typeof window !== "undefined" && scrollAnchor) {
+            scrollAnchor.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+    });
+
+    let hasOpenVisibleProjects = $derived(
+        filteredProjects.some((p) => openProjectIds.has(p.id)),
+    );
+
     function toggleProject(id: string) {
         const newSet = new Set(openProjectIds);
-        if (newSet.has(id)) {
-            newSet.delete(id);
-        } else {
-            newSet.add(id);
-        }
+        if (newSet.has(id)) newSet.delete(id);
+        else newSet.add(id);
         openProjectIds = newSet;
     }
 
     function expandAll() {
-        openProjectIds = new Set(filteredProjects.map((p) => p.id));
+        for (const project of filteredProjects) {
+            openProjectIds.add(project.id);
+        }
+        openProjectIds = new Set(openProjectIds);
     }
 
     function collapseAll() {
-        openProjectIds = new Set();
+        for (const project of filteredProjects) {
+            openProjectIds.delete(project.id);
+        }
+        openProjectIds = new Set(openProjectIds);
     }
 </script>
 
@@ -48,6 +64,8 @@
 >
     <div class="max-w-2xl mx-auto px-6 sm:px-8">
         <Hero />
+
+        <span bind:this={scrollAnchor} class="block h-0 w-0 invisible"></span>
 
         <div
             class="sticky top-0 z-10 bg-white/80 dark:bg-black/80 backdrop-blur-md py-4 mb-8 border-b border-gray-100 dark:border-gray-900 -mx-6 px-6 sm:-mx-8 sm:px-8"
@@ -74,11 +92,10 @@
                 <div
                     class="flex gap-3 text-xs font-medium text-gray-500 dark:text-gray-400 shrink-0"
                 >
-                    {#if openProjectIds.size === 0}
+                    {#if !hasOpenVisibleProjects}
                         <button
                             onclick={expandAll}
-                            class="hover:text-black dark:hover:text-white
-                        transition-colors cursor-pointer outline-none focus-visible:underline"
+                            class="hover:text-black dark:hover:text-white transition-colors cursor-pointer outline-none focus-visible:underline"
                         >
                             Expand All
                         </button>
@@ -127,7 +144,6 @@
 </div>
 
 <style>
-    /* Hide scrollbar for the filter tabs but keep functionality */
     .no-scrollbar::-webkit-scrollbar {
         display: none;
     }

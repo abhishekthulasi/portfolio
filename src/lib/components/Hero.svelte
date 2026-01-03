@@ -1,4 +1,4 @@
-<section class="pt-20 pb-10 sm:pt-32 sm:pb-16">
+<section class="pt-20 pb-5 sm:pt-32 sm:pb-8">
     <div class="space-y-8">
         <div class="space-y-2">
             <h1
