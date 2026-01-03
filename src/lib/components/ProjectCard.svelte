@@ -1,62 +1,89 @@
 <script lang="ts">
     import type { Project } from "$lib/data";
+    import Icon from "./Icon.svelte";
 
-    let { project }: { project: Project } = $props();
+    let {
+        project,
+        isOpen,
+        onToggle,
+    }: {
+        project: Project;
+        isOpen: boolean;
+        onToggle: () => void;
+    } = $props();
 
-    let isOpen = $state(false);
-
-    function toggle() {
-        isOpen = !isOpen;
-    }
+    let contentId = $derived(`project-content-${project.id}`);
 </script>
 
-<main>
-    <article
-        class="rounded-2xl p-4 transition-colors hover:bg-gray-50 dark:hover:bg-gray-900/50"
+<article
+    class="rounded-2xl p-4 transition-all duration-300 border border-transparent
+    {isOpen
+        ? 'bg-gray-50 dark:bg-gray-900/40 border-gray-200 dark:border-gray-800'
+        : 'hover:bg-gray-50 dark:hover:bg-gray-900/50'}"
+>
+    <button
+        onclick={onToggle}
+        class="w-full text-left group relative p-5 focus:outline-none cursor-pointer rounded-2xl focus-visible:ring-2 focus-visible:ring-blue-500/50"
+        aria-expanded={isOpen}
+        aria-controls={contentId}
     >
-        <button
-            onclick={toggle}
-            class="w-full text-left group relative py-4 focus:outline-none cursor-pointer"
-            aria-expanded={isOpen}
-        >
-            <div class="flex justify-between items-baseline">
-                <div class="space-y-1">
+        <div class="flex justify-between items-start gap-4">
+            <div class="space-y-1 grow">
+                <div class="flex items-center gap-3">
                     <h3
                         class="text-xl font-bold text-black dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors"
                     >
                         {project.title}
                     </h3>
-                    <p
-                        class="text-gray-500 dark:text-gray-400 font-mono text-sm"
+
+                    <span
+                        class="text-[10px] font-mono px-2 py-0.5 rounded-full border border-gray-200 dark:border-gray-700 text-gray-500 dark:text-gray-400"
                     >
-                        {project.tagline}
-                    </p>
+                        {project.year}
+                    </span>
                 </div>
 
-                <div class="hidden sm:flex gap-2">
+                <p class="text-gray-500 dark:text-gray-400 font-medium text-sm">
+                    {project.tagline}
+                </p>
+            </div>
+
+            <div class="flex flex-col items-end gap-3 shrink-0">
+                <div
+                    class="text-gray-400 transition-transform duration-300 {isOpen
+                        ? 'rotate-180'
+                        : ''}"
+                >
+                    <Icon name="chevron-down" class="w-5 h-5" />
+                </div>
+
+                <div
+                    class="hidden sm:flex flex-wrap justify-end gap-1.5 max-w-50"
+                >
                     {#each project.tech as t}
                         <span
-                            class="text-xs bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 px-2 py-1 rounded"
+                            class="text-[10px] bg-white
+                            dark:bg-black border border-gray-200 dark:border-gray-800 text-gray-600 dark:text-gray-300 px-1.5 py-0.5 rounded-md"
                         >
                             {t}
                         </span>
                     {/each}
                 </div>
             </div>
-        </button>
+        </div>
+    </button>
 
-        <div
-            class="grid transition-all duration-300 ease-in-out overflow-hidden"
-            style="grid-template-rows: {isOpen ? '1fr' : '0fr'};"
-        >
-            <div
-                class="min-h-0 opacity-0 transition-opacity duration-300 delay-75"
-                class:opacity-100={isOpen}
-            >
-                <div class="pb-8 sm:grid sm:grid-cols-12 gap-8">
-                    <div class="sm:col-span-5 mb-4 sm:mb-0">
+    {#if isOpen}
+        <div id={contentId}>
+            <div class="px-5 pb-6 pt-0">
+                <div
+                    class="h-px w-full bg-gray-200 dark:bg-gray-800 mb-6"
+                ></div>
+
+                <div class="sm:grid sm:grid-cols-12 gap-8">
+                    <div class="sm:col-span-5 mb-6 sm:mb-0">
                         <h4
-                            class="text-xs uppercase tracking-wider text-gray-400 mb-2"
+                            class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3 flex items-center gap-2"
                         >
                             The Problem
                         </h4>
@@ -67,28 +94,35 @@
                         </p>
                     </div>
 
-                    <div class="sm:col-span-7">
+                    <div class="sm:col-span-7 flex flex-col h-full">
                         <h4
-                            class="text-xs uppercase tracking-wider text-gray-400 mb-2"
+                            class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3"
                         >
                             The Solution
                         </h4>
                         <p
-                            class="text-gray-800 dark:text-gray-200 text-sm leading-relaxed"
+                            class="text-gray-800 dark:text-gray-200 text-sm leading-relaxed mb-6"
                         >
                             {project.solution}
                         </p>
 
                         {#if project.links && project.links.length > 0}
-                            <div class="mt-4 flex gap-4">
+                            <div class="mt-auto flex flex-wrap gap-3">
                                 {#each project.links as link}
                                     <a
                                         href={link.url}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        class="text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline decoration-2 underline-offset-4"
+                                        class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors
+                                        bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white hover:bg-gray-200
+                                        dark:hover:bg-gray-700"
                                     >
-                                        {link.label} →
+                                        <Icon
+                                            name={link.type === "github"
+                                                ? "github"
+                                                : "external"}
+                                        />
+                                        {link.label}
                                     </a>
                                 {/each}
                             </div>
@@ -97,6 +131,5 @@
                 </div>
             </div>
         </div>
-    </article>
-    <div class="my-2 border-b border-gray-200 dark:border-gray-800"></div>
-</main>
+    {/if}
+</article>

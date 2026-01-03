@@ -6,7 +6,8 @@ export interface Project {
     solution: string;
     tech: string[];
     tier: 'Systems' | 'Scale' | 'Tools';
-    links?: { label: string; url: string }[];
+    year: string;
+    links?: { label: string; url: string, type?: 'github' | 'external' }[];
 }
 
 export const projects: Project[] = [
@@ -19,7 +20,8 @@ export const projects: Project[] = [
         solution: 'A local-first synchronization engine that bridges devices directly over Wi-Fi. I utilized Rust for backend and Flutter for frontend, ensuring all platform compatibility, native speed and indendependent of internet.',
         tech: ['Cross Platform', 'Rust', 'Flutter'],
         tier: 'Systems',
-        links: [{ label: 'View Code', url: 'https://github.com/abhishekthulasi/localsync' }]
+        year: '2026',
+        links: [{ label: 'View Source', url: 'https://github.com/abhishekthulasi/localsync', type: 'github' }]
     },
     {
         id: 'gamedev',
@@ -27,10 +29,10 @@ export const projects: Project[] = [
         tagline: 'Partner & CTO',
         problem: 'VR often isolates users from the real world instead of enhancing it.',
         solution: 'Building a reality where users explore real cities with friends. We are creating a bridge where actions in the virtual world—like visiting a hotel lobby—connect to real-world services and booking systems.',
-        tech: ['Unity', 'C#', 'Technical Leadership'],
+        tech: ['Unity', 'C#'],
         tier: 'Systems',
-        links: [{ label: 'View Website', url: 'https://www.quantumarcadia.com' }]
-        // links: [] // Add link if public
+        year: '2026',
+        links: [{ label: 'View Website', url: 'https://www.quantumarcadia.com', type: 'external' }]
     },
     {
         id: 'generic-api',
@@ -40,7 +42,8 @@ export const projects: Project[] = [
         solution: 'A flexible architecture that accepts any object type and adapts its logic dynamically. It allows dynamic injection of custom logic (Apex) before or after upsertion without changing the API contract. Simple on the surface, complex under the hood.',
         tech: ['Design Patterns', 'Apex'],
         tier: 'Systems',
-        links: [{ label: 'View Architecture', url: 'https://github.com/abhishekthulasi/salesforce-generic-rest-api' }]
+        year: '2025',
+        links: [{ label: 'View Source', url: 'https://github.com/abhishekthulasi/salesforce-generic-rest-api', type: 'github' }, { label: 'View Demo', url: 'https://www.linkedin.com/posts/abhishek-thulasi-860656258_salesforce-apex-salesforcedeveloper-activity-7381644575653756928-Gl2O', type: 'external' }]
     },
 
     // --- TIER 2: SCALE (The Proven Engineer) ---
@@ -50,8 +53,9 @@ export const projects: Project[] = [
         tagline: 'Engineering for 1 Million Users.',
         problem: 'Managing a fragmented workforce of contractors across a massive geographic area is operationally chaotic.',
         solution: 'Lead Developer for India\'s largest adhesive manufacturer\'s contractor app. Engineered the mobile ecosystem that handles daily operations for over 1 million active users. Learned the discipline of scale.',
-        tech: ['Flutter Mobile', 'Scalable Architecture', 'CI/CD'],
+        tech: ['Flutter Mobile', 'CI/CD'],
         tier: 'Scale',
+        year: '2024',
         links: []
     },
     {
@@ -60,9 +64,10 @@ export const projects: Project[] = [
         tagline: 'Fostering Connection at Scale.',
         problem: 'Large conferences often suffer from low engagement. We needed a way to motivate 500+ participants to actually connect with each other.',
         solution: 'Developed a QR-based scoring system that gamified networking. Every connection and lecture attended translated into points and real rewards. The scoring engine became the primary driver for participant interaction.',
-        tech: ['Experience Cloud', 'LWC', 'Apex'],
+        tech: ['Experience Cloud', 'Apex', 'LWC'],
         tier: 'Scale',
-        links: [{ label: 'View Website', url: 'https://bengalurudreamin.com/about-us/' }]
+        year: '2024',
+        links: [{ label: 'View Website', url: 'https://bengalurudreamin.com/about-us/', type: 'external' }]
     },
     {
         id: 'muledreamin',
@@ -72,6 +77,7 @@ export const projects: Project[] = [
         solution: 'A Flutter-based event companion with Firebase Realtime Database. Delivers live lecture status, event tracking, and instant updates to hundreds of attendees.',
         tech: ['Flutter', 'Firebase', 'Real-time DB'],
         tier: 'Scale',
+        year: '2023',
         links: []
     },
 
@@ -81,10 +87,11 @@ export const projects: Project[] = [
         title: 'Prime Video Ad Accelerator',
         tagline: 'Respecting Your Time.',
         problem: 'I was bored and wanted to solve a minor annoyance. I noticed that legally, ads must admit they are ads by showing a timer.',
-        solution: 'A simple chrome extension that looks for this undeniable, legally required ad pattern. When it detects the timer, it fast-forwards playback. A selfish, simple tool that just works.',
-        tech: ['DOM Manipulation', 'Chrome Extension'],
+        solution: 'A simple chrome extension that looks for this undeniable, legally required ad pattern. When it detects the timer, it fast-forwards playback.',
+        tech: ['Chrome Extension', 'JavaScript'],
         tier: 'Tools',
-        links: [{ label: 'View Source', url: 'https://github.com/abhishekthulasi/prime-video-ad-accelerator' }]
+        year: '2025',
+        links: [{ label: 'View Source', url: 'https://github.com/abhishekthulasi/prime-video-ad-accelerator', type: 'github' }]
     },
     {
         id: 'lwc-combobox',
@@ -92,8 +99,9 @@ export const projects: Project[] = [
         tagline: 'Fixing the Standard UI.',
         problem: 'The standard Salesforce Lightning combobox lacked search and multi-select, forcing developers to build hacky workarounds.',
         solution: 'An open-source, reusable LWC component that fills the gap. Now a community standard for developers needing better form controls.',
-        tech: ['LWC', 'JavaScript', 'Ease of Use'],
+        tech: ['LWC'],
         tier: 'Tools',
-        links: [{ label: 'View Demo', url: '#' }] // Add LinkedIn link here
+        year: '2023',
+        links: [{ label: 'View Source', url: 'https://github.com/abhishekthulasi/advanced-lightning-combobox', type: 'github' }, { label: 'View Demo', url: 'https://www.linkedin.com/posts/abhishek-thulasi-860656258_salesforcedeveloper-salesforcelightning-lwc-activity-7142375999190589440-a4VM', type: 'external' }]
     }
 ];
