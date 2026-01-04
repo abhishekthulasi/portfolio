@@ -54,6 +54,7 @@
                     class="text-gray-400 transition-transform duration-300 {isOpen
                         ? 'rotate-180'
                         : ''}"
+                    aria-hidden="true"
                 >
                     <Icon name="chevron-down" class="w-5 h-5" />
                 </div>

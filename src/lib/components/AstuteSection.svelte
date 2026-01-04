@@ -29,6 +29,7 @@
                 <a
                     href="https://www.astute-insights.com"
                     target="_blank"
+                    rel="noopener noreferrer"
                     class="inline-flex items-center gap-2 text-black dark:text-white border-b-2 border-black dark:border-white pb-1 hover:text-gray-600 dark:hover:text-gray-300 transition-colors font-medium"
                 >
                     Read the Manifesto
