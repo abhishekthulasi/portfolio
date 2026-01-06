@@ -15,7 +15,7 @@ const config = {
 			// default options are shown.
 			pages: 'build', // Output directory for pages (index.html will go here)
 			assets: 'build', // Output directory for assets
-			fallback: 'index.html', // Crucial for SPA-like fallback
+			fallback: '404.html', // Prevents overwriting the actual index.html
 			precompress: false, // Set to true if you want gzip/brotli precompression
 			strict: true
 		}),
