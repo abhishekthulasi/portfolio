@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { tick } from "svelte";
     import Hero from "$lib/components/Hero.svelte";
     import ProjectCard from "$lib/components/ProjectCard.svelte";
     import AstuteSection from "$lib/components/AstuteSection.svelte";
@@ -17,14 +18,6 @@
             : projects.filter((p) => p.tier === activeFilter),
     );
 
-    $effect(() => {
-        activeFilter;
-
-        if (typeof window !== "undefined" && scrollAnchor) {
-            scrollAnchor.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-    });
-
     let hasOpenVisibleProjects = $derived(
         filteredProjects.some((p) => openProjectIds.has(p.id)),
     );
@@ -34,6 +27,15 @@
         if (newSet.has(id)) newSet.delete(id);
         else newSet.add(id);
         openProjectIds = newSet;
+    }
+
+    async function toggleFilter(selectedFilter: typeof activeFilter) {
+        activeFilter = selectedFilter;
+        await tick();
+        scrollAnchor?.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+        });
     }
 
     function expandAll() {
@@ -52,10 +54,10 @@
 </script>
 
 <svelte:head>
-    <title>Abhishek Thulasi | Software Engineer</title>
+    <title>Abhishek Thulasi | Systems Engineer</title>
     <meta
         name="description"
-        content="Portfolio of Abhishek Thulasi - Systems, Scale, and Tools. Engineering complexity to deliver simplicity."
+        content="Portfolio of Abhishek Thulasi - Systems, Scale, and Tools."
     />
 </svelte:head>
 
@@ -78,7 +80,7 @@
                 >
                     {#each filters as filter}
                         <button
-                            onclick={() => (activeFilter = filter)}
+                            onclick={() => toggleFilter(filter)}
                             class="cursor-pointer px-4 py-2 rounded-2xl text-sm font-medium transition-all whitespace-nowrap outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white
                             {activeFilter === filter
                                 ? 'bg-black text-white dark:bg-white dark:text-black'

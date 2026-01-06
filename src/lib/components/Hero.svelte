@@ -9,7 +9,7 @@
             <h2
                 class="text-xl sm:text-2xl text-gray-500 dark:text-gray-400 font-medium"
             >
-                Software Engineer
+                Systems Engineer
             </h2>
         </div>
 
@@ -17,8 +17,11 @@
             <p
                 class="text-xl sm:text-2xl font-medium text-black dark:text-white leading-snug"
             >
-                I solve problems by embracing the complexity of engineering to
-                deliver simplicity in experience.
+                I build systems that survive the real world. I prioritize
+                <span class="text-blue-600 dark:text-blue-400"
+                    >verifiable reliability</span
+                >
+                over popular complexity.
             </p>
 
             <div class="space-y-6">
@@ -39,9 +42,9 @@
                         >.
                     </p>
                     <p>
-                        If the goal is speed, I leverage <strong
+                        If the goal is velocity, I leverage <strong
                             class="text-gray-700 dark:text-gray-300"
-                            >Hacks</strong
+                            >Abstractions</strong
                         >.
                     </p>
                     <p>

@@ -15,10 +15,10 @@ export const projects: Project[] = [
     {
         id: 'localsync',
         title: 'LocalSync',
-        tagline: 'Your Storage. Your Limits.',
+        tagline: 'Cloudless Sync. Your Storage. Your Limits.',
         problem: 'Cloud storage offers convenience at the cost of recurring fees, internet dependency, and privacy trade-offs. It leaves local hardware underutilized.',
-        solution: 'A local-first synchronization engine that bridges devices directly over Wi-Fi. I utilized Rust for backend and Flutter for frontend, ensuring all platform compatibility, native speed and indendependent of internet.',
-        tech: ['Cross Platform', 'Rust', 'Flutter'],
+        solution: 'A local-first synchronization engine that bridges devices directly over Wi-Fi. Built with Rust for minimal resource footprint in the backend and Flutter for a ubiquitous frontend. Zero latency. Zero monthly fees.',
+        tech: ['Local-First', 'Rust', 'Flutter'],
         tier: 'Systems',
         year: '2026',
         links: [{ label: 'View Source', url: 'https://github.com/abhishekthulasi/localsync', type: 'github' }]
@@ -26,10 +26,10 @@ export const projects: Project[] = [
     {
         id: 'gamedev',
         title: 'Quantum Arcadia',
-        tagline: 'Partner & CTO',
-        problem: 'VR often isolates users from the real world instead of enhancing it.',
-        solution: 'Building a reality where users explore real cities with friends. We are creating a bridge where actions in the virtual world—like visiting a hotel lobby—connect to real-world services and booking systems.',
-        tech: ['Unity', 'C#'],
+        tagline: 'VR with Real-World Consequences.',
+        problem: 'Virtual Reality often isolates users from the real world, creating a "walled garden" experience that lacks real-world consequence.',
+        solution: 'Designing the architecture for a "Reality-First" VR MMO. We\'re building a bridge where in-game actions—like entering a virtual hotel—trigger real-world API calls to hotel booking systems and services. VR as an interface, not an escape.',
+        tech: ['Unity', 'C#', 'System Design'],
         tier: 'Systems',
         year: '2026',
         links: [{ label: 'View Website', url: 'https://www.quantumarcadia.com', type: 'external' }]
@@ -37,13 +37,24 @@ export const projects: Project[] = [
     {
         id: 'generic-api',
         title: 'Enterprise Polymorphic API',
-        tagline: 'Abstracting Complexity.',
-        problem: 'Standard Salesforce REST APIs are rigid. Building custom endpoints for every object is repetitive and creates unnecessary complexity.',
-        solution: 'A flexible architecture that accepts any object type and adapts its logic dynamically. It allows dynamic injection of custom logic (Apex) before or after upsertion without changing the API contract. Simple on the surface, complex under the hood.',
+        tagline: 'Write Once, Handle Anything.',
+        problem: 'Salesforce REST APIs are notoriously rigid. Building custom endpoints for every new data object creates technical debt and repetitive maintenance.',
+        solution: 'Engineered a polymorphic architecture that accepts dynamic object types along with multiple children. It uses dependency injection (Apex) to allow custom logic injection before/after upsertion without altering the core API contract. Abstracting the complexity of the platform.',
         tech: ['Design Patterns', 'Apex'],
         tier: 'Systems',
         year: '2025',
         links: [{ label: 'View Source', url: 'https://github.com/abhishekthulasi/salesforce-generic-rest-api', type: 'github' }, { label: 'View Demo', url: 'https://www.linkedin.com/posts/abhishek-thulasi-860656258_salesforce-apex-salesforcedeveloper-activity-7381644575653756928-Gl2O', type: 'external' }]
+    },
+    {
+        id: 'chat-architecture',
+        title: 'Chat Web-App From Scratch',
+        tagline: 'Stripping away the abstractions.',
+        problem: 'Modern chat libraries hide the complexity of WebSocket management. I wanted to understand the raw engineering costs of real-time concurrency.',
+        solution: 'A full-duplex chat system built without "magic" libraries. The backend uses Golang goroutines for massive concurrency. The frontend uses a custom synchronization protocol between SurrealDB and client-side IndexedDB for a true offline-first architecture.',
+        tech: ['Golang', 'Svelte', 'SurrealDB'],
+        tier: 'Systems',
+        year: '2024',
+        links: [{ label: 'View Source', url: 'https://github.com/abhishekthulasi/chat-backend', type: 'github' }]
     },
 
     // --- TIER 2: SCALE (The Proven Engineer) ---
@@ -52,8 +63,19 @@ export const projects: Project[] = [
         title: 'Enterprise Contractor App',
         tagline: 'Engineering for 1 Million Users.',
         problem: 'Managing a fragmented workforce of contractors across a massive geographic area is operationally chaotic.',
-        solution: 'Lead Developer for India\'s largest adhesive manufacturer\'s contractor app. Engineered the mobile ecosystem that handles daily operations for over 1 million active users. Learned the discipline of scale.',
+        solution: 'Helped develop the mobile ecosystem for India\'s largest adhesive manufacturer. The system handles daily operations for 1M+ users, focusing on extreme fault tolerance.',
         tech: ['Flutter Mobile', 'CI/CD'],
+        tier: 'Scale',
+        year: '2024',
+        links: []
+    },
+    {
+        id: 'scan-to-sf',
+        title: 'OCR Automation Engine',
+        tagline: 'Zero Downtime Migration.',
+        problem: 'A sudden deprecation of Salesforce\'s native scanning tool threatened to disrupt the lead-gen workflow of hundreds of sales reps.',
+        solution: 'Built a drop-in replacement using Flutter, OCR and Google\'s Gemini API. Leveraged Salesforce to handle complex relationship mapping in a single transaction. Shipped in <30 days; reduced manual entry time by 90%.',
+        tech: ['Gemini & OCR', 'Flutter', 'Salesforce'],
         tier: 'Scale',
         year: '2024',
         links: []
@@ -61,9 +83,9 @@ export const projects: Project[] = [
     {
         id: 'bengaluru-dreamin',
         title: 'Bengaluru Dreamin Quest',
-        tagline: 'Fostering Connection at Scale.',
-        problem: 'Large conferences often suffer from low engagement. We needed a way to motivate 500+ participants to actually connect with each other.',
-        solution: 'Developed a QR-based scoring system that gamified networking. Every connection and lecture attended translated into points and real rewards. The scoring engine became the primary driver for participant interaction.',
+        tagline: 'Gamifying Human Connection.',
+        problem: 'Conference engagement is usually passive. We needed a system to incentivize 500+ participants to actually connect with each other.',
+        solution: 'Developed a QR-based scoring engine. Every interaction (booth visit, connection, lecture) translated into points and real rewards in real-time. The system successfully became the primary driver for participant interaction.',
         tech: ['Experience Cloud', 'Apex', 'LWC'],
         tier: 'Scale',
         year: '2024',
@@ -72,22 +94,22 @@ export const projects: Project[] = [
     {
         id: 'muledreamin',
         title: 'MuleDreamin App',
-        tagline: 'Connecting Communities.',
+        tagline: 'Real-Time Event Orchestration.',
         problem: 'Conference attendees often miss sessions due to static schedules and lack of real-time updates.',
-        solution: 'A Flutter-based event companion with Firebase Realtime Database. Delivers live lecture status, event tracking, and instant updates to hundreds of attendees.',
+        solution: 'A Flutter-based event companion backed by Firebase. Delivers push-based updates on lecture status and schedule changes instantly to all devices.',
         tech: ['Flutter', 'Firebase', 'Real-time DB'],
         tier: 'Scale',
         year: '2023',
         links: []
     },
 
-    // --- TIER 3: HACKS (The Problem Solver) ---
+    // --- TIER 3: TOOLS (The Problem Solver) ---
     {
         id: 'prime-accel',
-        title: 'Prime Video Ad Accelerator',
-        tagline: 'Respecting Your Time.',
-        problem: 'I was bored and wanted to solve a minor annoyance. I noticed that legally, ads must admit they are ads by showing a timer.',
-        solution: 'A simple chrome extension that looks for this undeniable, legally required ad pattern. When it detects the timer, it fast-forwards playback.',
+        title: 'Ad Accelerator',
+        tagline: 'Automating the Annoyance.',
+        problem: 'I was bored and wanted to solve the minor annoyance of unskippable ads disrupting the viewing experience.',
+        solution: 'Regulatory guidelines require ads to be distinguishable, forcing platforms to render predictable UI elements—specifically an "Ad" label and timer. I built a Chrome extension that detects these specific DOM patterns and fast-forwards the playback rate.',
         tech: ['Chrome Extension', 'JavaScript'],
         tier: 'Tools',
         year: '2025',
@@ -96,9 +118,9 @@ export const projects: Project[] = [
     {
         id: 'lwc-combobox',
         title: 'Advanced LWC Combobox',
-        tagline: 'Fixing the Standard UI.',
-        problem: 'The standard Salesforce Lightning combobox lacked search and multi-select, forcing developers to build hacky workarounds.',
-        solution: 'An open-source, reusable LWC component that fills the gap. Now a community standard for developers needing better form controls.',
+        tagline: 'Fixing Standard UI Limitations.',
+        problem: 'The standard Salesforce Lightning combobox lacked search and multi-select, forcing developers into hacky workarounds.',
+        solution: 'An open-source, reusable LWC component that fills the gap providing a better user experience.',
         tech: ['LWC'],
         tier: 'Tools',
         year: '2023',

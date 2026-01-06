@@ -3,26 +3,29 @@
 >
     <div class="max-w-2xl mx-auto text-center space-y-8">
         <span class="text-xs font-bold tracking-widest uppercase text-gray-400">
-            The Author
+            The Philosophy
         </span>
 
         <h2 class="text-3xl sm:text-4xl font-serif text-black dark:text-white">
-            Astute Insights
+            The Debugger's Mindset
         </h2>
 
         <p
             class="text-lg text-gray-600 dark:text-gray-400 font-serif italic leading-relaxed"
         >
-            "We live in stories told by others—about success, beauty, and
-            happiness. Astuteness is the discipline of pausing to ask: 'Is this
-            true for me?'"
+            "Great engineering requires <strong
+                class="text-gray-800 dark:text-gray-200 font-medium"
+                >questioning assumptions</strong
+            >. I apply that same discipline to life—deconstructing the
+            'narratives' of success and happiness just as I would a faulty
+            codebase."
         </p>
 
         <div class="space-y-4">
             <p class="text-sm text-gray-500 dark:text-gray-500 font-sans">
-                Currently writing a book that deconstructs the narratives sold
-                to us by influencers and industries. It’s a project about mental
-                clarity, not code.
+                I am currently writing a book that audits the scripts handed to
+                us by society. It's a project about mental clarity, built with
+                the same precision as my software.
             </p>
 
             <div class="pt-4">
