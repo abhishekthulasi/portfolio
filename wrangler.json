@@ -5,5 +5,16 @@
     "assets": {
         "directory": ".svelte-kit/cloudflare",
         "binding": "ASSETS"
-    }
+    },
+    "$schema": "./node_modules/wrangler/config-schema.json",
+    "routes": [
+        {
+            "pattern": "abhishekthulasi.com/*",
+            "zone_name": "abhishekthulasi.com"
+        },
+        {
+            "pattern": "www.abhishekthulasi.com/*",
+            "zone_name": "abhishekthulasi.com"
+        }
+    ]
 }
