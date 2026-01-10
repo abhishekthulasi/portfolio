@@ -7,16 +7,11 @@ const config = {
 
 	kit: {
 		adapter: adapter({
-			pages: 'build', // Output directory for pages (index.html will go here)
-			assets: 'build', // Output directory for assets
-			fallback: '404.html', // Prevents overwriting the actual index.html
-			precompress: false, // Set to true if you want gzip/brotli precompression
-			strict: true
-		}),
-		// Ensure that SvelteKit knows your application should be fully static
-		prerender: {
-			entries: ['*', '/'] // '*' prerenders all found routes, '/' ensures index.html is there
-		}
+			routes: {
+				include: ['/*'],
+				exclude: ['<all>']
+			}
+		})
 	}
 };
 
