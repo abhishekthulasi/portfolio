@@ -2,7 +2,7 @@
     class="py-24 rounded-xl border-gray-200 dark:border-gray-800 mt-12 bg-gray-50 dark:bg-gray-900/30 -mx-4 px-4 sm:-mx-8 sm:px-8"
 >
     <div class="max-w-2xl mx-auto text-center space-y-8">
-        <span class="text-xs font-bold tracking-widest uppercase text-gray-400">
+        <span class="text-xs font-bold tracking-widest uppercase text-gray-500">
             The Philosophy
         </span>
 

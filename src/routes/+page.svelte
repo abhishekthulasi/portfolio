@@ -138,7 +138,7 @@
         <AstuteSection />
 
         <footer
-            class="py-12 text-center text-xs text-gray-400 dark:text-gray-600"
+            class="py-12 text-center text-xs text-gray-500 dark:text-gray-400"
         >
             &copy; {new Date().getFullYear()} Abhishek Thulasi. Built with SvelteKit.
         </footer>
