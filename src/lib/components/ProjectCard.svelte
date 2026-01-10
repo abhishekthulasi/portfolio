@@ -85,7 +85,7 @@
                 <div class="sm:grid sm:grid-cols-12 gap-8">
                     <div class="sm:col-span-5 mb-6 sm:mb-0">
                         <h4
-                            class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3 flex items-center gap-2"
+                            class="text-xs font-bold uppercase tracking-widest text-gray-500 mb-3 flex items-center gap-2"
                         >
                             The Problem
                         </h4>
@@ -98,7 +98,7 @@
 
                     <div class="sm:col-span-7 flex flex-col h-full">
                         <h4
-                            class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3"
+                            class="text-xs font-bold uppercase tracking-widest text-gray-500 mb-3"
                         >
                             The Solution
                         </h4>

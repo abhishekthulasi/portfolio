@@ -61,7 +61,7 @@
     />
 </svelte:head>
 
-<div
+<main
     class="min-h-screen bg-white dark:bg-black selection:bg-gray-200 dark:selection:bg-gray-800"
 >
     <div class="max-w-2xl mx-auto px-6 sm:px-8">
@@ -143,7 +143,7 @@
             &copy; {new Date().getFullYear()} Abhishek Thulasi. Built with SvelteKit.
         </footer>
     </div>
-</div>
+</main>
 
 <style>
     .no-scrollbar::-webkit-scrollbar {
