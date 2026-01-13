@@ -51,6 +51,21 @@
         }
         openProjectIds = new Set(openProjectIds);
     }
+
+    const schema = {
+        "@context": "https://schema.org",
+        "@type": "ProfilePage",
+        mainEntity: {
+            "@type": "Person",
+            name: "Abhishek Thulasi",
+            jobTitle: "Systems Engineer",
+            url: "https://abhishekthulasi.com",
+            sameAs: [
+                "https://github.com/abhishekthulasi",
+                "https://www.linkedin.com/in/abhishek-thulasi-860656258",
+            ],
+        },
+    };
 </script>
 
 <svelte:head>
@@ -59,6 +74,7 @@
         name="description"
         content="Portfolio of Abhishek Thulasi - Systems, Scale, and Tools."
     />
+    {@html `<script type="application/ld+json">${JSON.stringify(schema)}</script>`}
 </svelte:head>
 
 <main

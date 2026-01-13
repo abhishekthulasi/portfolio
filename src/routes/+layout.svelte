@@ -1,26 +1,32 @@
 <script lang="ts">
 	import "./layout.css";
 	import favicon from "$lib/assets/favicon.svg";
+	import { page } from "$app/state";
 
 	let { children } = $props();
+
+	let canonicalPath = $derived(
+		page.url.pathname === "/" ? "" : page.url.pathname.replace(/\/$/, ""),
+	);
+
+	const websiteSchema = {
+		"@context": "https://schema.org",
+		"@type": "WebSite",
+		name: "Abhishek Thulasi Portfolio",
+		url: "https://abhishekthulasi.com",
+		author: {
+			"@type": "Person",
+			name: "Abhishek Thulasi",
+		},
+	};
 </script>
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
 
-	<script type="application/ld+json">
-		{
-			"@context": "https://schema.org",
-			"@type": "Person",
-			"name": "Abhishek Thulasi",
-			"url": "https://abhishekthulasi.com",
-			"jobTitle": "Systems Engineer",
-			"sameAs": [
-				"https://github.com/abhishekthulasi",
-				"https://www.linkedin.com/in/abhishek-thulasi-860656258"
-			]
-		}
-	</script>
+	<link rel="canonical" href="https://abhishekthulasi.com{canonicalPath}" />
+
+	{@html `<script type="application/ld+json">${JSON.stringify(websiteSchema)}</script>`}
 </svelte:head>
 
 {@render children()}
