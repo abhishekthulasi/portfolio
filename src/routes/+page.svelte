@@ -11,6 +11,7 @@
     let openProjectIds = $state(new Set<string>());
 
     let scrollAnchor = $state<HTMLElement>();
+    let projectsContainer = $state<HTMLElement>();
 
     let filteredProjects = $derived(
         activeFilter === "All"
@@ -30,12 +31,49 @@
     }
 
     async function toggleFilter(selectedFilter: typeof activeFilter) {
+        if (!projectsContainer) {
+            activeFilter = selectedFilter;
+            return;
+        }
+
+        // 1. Lock Height to prevent scroll jumping
+        const startHeight = projectsContainer.offsetHeight;
+        projectsContainer.style.height = `${startHeight}px`;
+        projectsContainer.style.overflow = "hidden";
+
+        // 2. Update State
         activeFilter = selectedFilter;
-        await tick();
+        await tick(); // Allow Svelte to render the new (likely shorter) list
+
+        // 3. Measure Natural Height
+        // We momentarily unlock the height to see how tall the NEW content wants to be.
+        // This happens in the same frame, so the user won't see a flash.
+        projectsContainer.style.height = "auto";
+        const targetHeight = projectsContainer.offsetHeight;
+
+        // 4. Animate Height
+        projectsContainer.style.height = `${startHeight}px`;
+        projectsContainer.offsetHeight; // Force reflow
+
+        // Duration matches the staggered animation feel (800ms)
+        projectsContainer.style.transition =
+            "height 800ms cubic-bezier(0.25, 0.8, 0.25, 1)";
+        projectsContainer.style.height = `${targetHeight}px`;
+
+        // 5. Scroll to Top
         scrollAnchor?.scrollIntoView({
             behavior: "smooth",
             block: "start",
         });
+
+        // 6. Cleanup after animation
+        setTimeout(() => {
+            if (projectsContainer) {
+                projectsContainer.style.height = "";
+                projectsContainer.style.transition = "";
+                projectsContainer.style.overflow = "";
+            }
+        }, 800);
     }
 
     function expandAll() {
@@ -129,7 +167,7 @@
             </div>
         </div>
 
-        <div class="space-y-4">
+        <div class="space-y-4" bind:this={projectsContainer}>
             {#if filteredProjects.length === 0}
                 <div class="py-12 text-center text-gray-400">
                     <p>No projects found in this category.</p>
