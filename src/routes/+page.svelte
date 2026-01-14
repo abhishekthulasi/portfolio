@@ -31,6 +31,8 @@
     }
 
     async function toggleFilter(selectedFilter: typeof activeFilter) {
+        if (activeFilter === selectedFilter) return;
+
         if (!projectsContainer) {
             activeFilter = selectedFilter;
             return;
