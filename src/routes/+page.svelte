@@ -191,7 +191,7 @@
             {/each}
         </div>
 
-        <AstuteSection />
+        <!-- <AstuteSection /> -->
 
         <footer
             class="py-12 text-center text-xs text-gray-500 dark:text-gray-400"
