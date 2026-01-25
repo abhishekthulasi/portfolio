@@ -9,7 +9,7 @@
             <h2
                 class="text-xl sm:text-2xl text-gray-500 dark:text-gray-400 font-medium"
             >
-                Systems Engineer
+                Systems Architect
             </h2>
         </div>
 

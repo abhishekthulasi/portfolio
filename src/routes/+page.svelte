@@ -2,7 +2,7 @@
     import { tick } from "svelte";
     import Hero from "$lib/components/Hero.svelte";
     import ProjectCard from "$lib/components/ProjectCard.svelte";
-    import AstuteSection from "$lib/components/AstuteSection.svelte";
+    // import AstuteSection from "$lib/components/AstuteSection.svelte";
     import { projects } from "$lib/data";
 
     const filters = ["All", "Systems", "Scale", "Tools"] as const;
@@ -98,7 +98,7 @@
         mainEntity: {
             "@type": "Person",
             name: "Abhishek Thulasi",
-            jobTitle: "Systems Engineer",
+            jobTitle: "Systems Architect",
             url: "https://abhishekthulasi.com",
             sameAs: [
                 "https://github.com/abhishekthulasi",
@@ -109,7 +109,7 @@
 </script>
 
 <svelte:head>
-    <title>Abhishek Thulasi | Systems Engineer</title>
+    <title>Abhishek Thulasi | Systems Architect</title>
     <meta
         name="description"
         content="Portfolio of Abhishek Thulasi - Systems, Scale, and Tools."
