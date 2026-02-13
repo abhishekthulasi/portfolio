@@ -50,7 +50,7 @@
                     <p>
                         If the goal is "Fast, Cheap, and Perfect"... <br />
                         <span class="italic text-gray-500 dark:text-gray-400"
-                            >I suggest we respect the laws of physics.</span
+                            >I respectfully decline the engagement.</span
                         >
                     </p>
                 </div>
