@@ -28,8 +28,8 @@
                 <p
                     class="text-gray-600 dark:text-gray-400 text-base leading-relaxed"
                 >
-                    The tech stack is just a detail. I don't choose technology
-                    based on what's popular; I choose it based on the stakes.
+                    The tech stack is just a detail. I choose technology based
+                    on the stakes.
                 </p>
 
                 <div
