@@ -50,7 +50,8 @@
                     <p>
                         If the goal is "Fast, Cheap, and Perfect"... <br />
                         <span class="italic text-gray-500 dark:text-gray-400"
-                            >I respectfully decline the engagement.</span
+                            >I help stakeholders choose the two that actually
+                            matter.</span
                         >
                     </p>
                 </div>

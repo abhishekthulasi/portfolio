@@ -28,7 +28,7 @@ export const projects: Project[] = [
         title: 'Quantum Arcadia',
         tagline: 'VR with Real-World Consequences.',
         problem: 'Virtual Reality often isolates users from the real world, creating a "walled garden" experience that lacks real-world consequence.',
-        solution: 'Designing the architecture for a "Reality-First" VR MMO. We\'re building a bridge where in-game actions—like entering a virtual hotel—trigger real-world API calls to hotel booking systems and services. VR as an interface, not an escape.',
+        solution: 'Designing the architecture for a \'Reality- First\' VR MMO. In-game actions—like entering a virtual hotel—trigger real-world API calls to physical booking systems. VR as an interface, not an escape.',
         tech: ['Unity', 'C#', 'System Design'],
         tier: 'Systems',
         year: '2026',
