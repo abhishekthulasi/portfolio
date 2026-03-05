@@ -13,6 +13,17 @@ export interface Project {
 export const projects: Project[] = [
     // --- TIER 1: SYSTEMS (The Architect) ---
     {
+        id: 'quantum-arcadia-infra',
+        title: 'Quantum Arcadia Infrastructure',
+        tagline: 'Multi-Platform Orchestration & Delivery Engine.',
+        problem: 'Delivering and scaling a massive multi-platform application required highly scalable backend infrastructure, memory-safe binary patching to minimize bandwidth, and seamless cross-platform identity management.',
+        solution: 'Architected a Golang modular monolith orchestrated via Docker to manage highly concurrent state. Built a custom delivery engine in Rust utilizing BLAKE3 hashing and binary delta-patching. Secured the entire ecosystem with a passwordless FIDO2/WebAuthn edge-deployed portal using Svelte and Cloudflare.',
+        tech: ['Rust', 'Golang', 'Flutter', 'Docker', 'Svelte', 'FIDO2/WebAuthn', 'Unity'],
+        tier: 'Systems',
+        year: '2026',
+        links: [{ label: 'View Platform', url: 'https://www.quantumarcadia.com', type: 'external' }]
+    },
+    {
         id: 'localsync',
         title: 'LocalSync',
         tagline: 'Cloudless Sync. Your Storage. Your Limits.',
@@ -22,17 +33,6 @@ export const projects: Project[] = [
         tier: 'Systems',
         year: '2026',
         links: [{ label: 'View Source', url: 'https://github.com/abhishekthulasi/localsync', type: 'github' }]
-    },
-    {
-        id: 'gamedev',
-        title: 'Quantum Arcadia',
-        tagline: 'VR with Real-World Consequences.',
-        problem: 'Virtual Reality often isolates users from the real world, creating a "walled garden" experience that lacks real-world consequence.',
-        solution: 'Designing the architecture for a \'Reality- First\' VR MMO. In-game actions—like entering a virtual hotel—trigger real-world API calls to physical booking systems. VR as an interface, not an escape.',
-        tech: ['Unity', 'C#', 'System Design'],
-        tier: 'Systems',
-        year: '2026',
-        links: [{ label: 'View Website', url: 'https://www.quantumarcadia.com', type: 'external' }]
     },
     {
         id: 'generic-api',
