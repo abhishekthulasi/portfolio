@@ -191,10 +191,10 @@ export const adrs: ADR[] = [
         date: "March 2026", //
         status: "Accepted", //
         tags: ["Svelte", "Cloudflare", "Cost-Optimization"],
-        context: "We need a web portal for marketing and identity (FIDO2/WebAuthn). The current Wix solution costs ~$450/month and lacks the programmatic flexibility required for custom cryptographic auth flows.", //
+        context: "We need a web portal for marketing and identity (FIDO2/WebAuthn). The current Wix solution costs ~₹450/month and lacks the programmatic flexibility required for custom cryptographic auth flows.", //
         decision: "Migrate to Svelte 5 deployed on Cloudflare Pages utilizing adapter-cloudflare.", //
         rationale: [
-            "Cost Efficiency: Cloudflare Pages provides unlimited free bandwidth and free SSL, eliminating the $450/month overhead.", //
+            "Cost Efficiency: Cloudflare Pages provides unlimited free bandwidth and free SSL, eliminating the ₹450/month overhead.", //
             "Performance: Svelte compiles to highly optimized vanilla HTML/CSS/JS, providing near-instant load times.", //
             "Edge Computing: We can securely proxy /api/* requests directly to our AWS Golang backend via Cloudflare Workers with zero cold starts." //
         ]
