@@ -10,6 +10,17 @@ export interface Project {
     links?: { label: string; url: string, type?: 'github' | 'external' }[];
 }
 
+export interface ADR {
+    id: string;
+    title: string;
+    date: string;
+    status: string;
+    tags: string[];
+    context: string;
+    decision: string;
+    rationale: string[];
+}
+
 export const projects: Project[] = [
     // --- TIER 1: SYSTEMS (The Architect) ---
     {
@@ -21,7 +32,10 @@ export const projects: Project[] = [
         tech: ['Rust', 'Golang', 'Flutter', 'Docker', 'Svelte', 'FIDO2/WebAuthn', 'Unity'],
         tier: 'Systems',
         year: '2026',
-        links: [{ label: 'View Platform', url: 'https://www.quantumarcadia.com', type: 'external' }]
+        links: [
+            { label: 'Architecture Log', url: '/architecture', type: 'external' },
+            { label: 'View Platform', url: 'https://www.quantumarcadia.com', type: 'external' },
+        ]
     },
     {
         id: 'localsync',
@@ -125,5 +139,105 @@ export const projects: Project[] = [
         tier: 'Tools',
         year: '2023',
         links: [{ label: 'View Source', url: 'https://github.com/abhishekthulasi/advanced-lightning-combobox', type: 'github' }, { label: 'View Demo', url: 'https://www.linkedin.com/posts/abhishek-thulasi-860656258_salesforcedeveloper-salesforcelightning-lwc-activity-7142375999190589440-a4VM', type: 'external' }]
+    }
+];
+
+export const adrs: ADR[] = [
+    {
+        id: "adr-001",
+        title: "ADR 001: Selection of In-Memory Data Store (Valkey vs. Redis)", //
+        date: "March 2026", //
+        status: "Accepted", //
+        tags: ["Docker", "Valkey", "Cost-Optimization"],
+        context: "For the Quantum Arcadia backend, we require a fast, in-memory data store to handle temporary OTP codes, rate-limiting, and ephemeral game lobby party management.", //
+        decision: "Use Valkey (deployed via Docker containers) as our primary in-memory data store instead of Redis.", //
+        rationale: [
+            "Valkey provides an approximate 33% reduction in caching infrastructure costs while maintaining the exact same performance and API signature.", //
+            "Because we are a bootstrapped startup, optimizing our monthly cloud burn rate is a top priority.", //
+            "Valkey is a complete drop-in replacement, allowing the Golang backend to use standard Redis client libraries with zero code modification." //
+        ]
+    },
+    {
+        id: "adr-002",
+        title: "ADR 002: Selection of Unity Dependency Injection Framework (VContainer vs. Zenject)", //
+        date: "March 2026", //
+        status: "Accepted", //
+        tags: ["Unity", "Dependency Injection", "Performance"],
+        context: "We must manage complex global systems across a massive number of scenes and downloadable city modules. Heavy frameworks cause tight coupling and performance degradation on mobile VR hardware.", //
+        decision: "Use VContainer strictly applied to the 'Invisible Layer' (Global Architecture/Systems) and not to the 'Visible Layer' (Gameplay/Content).", //
+        rationale: [
+            "Performance: VContainer avoids reflection overhead, resolving dependencies 5–10x faster than Zenject with very little memory allocation.", //
+            "Maintainability: Utilizing the Composition Root model (LifetimeScope) allows us to explicitly wire up the core architecture in one place.", //
+            "Separation of Concerns: Prevents DI from infecting gameplay scripts, maintaining Unity's fast, prefab-based workflow." //
+        ]
+    },
+    {
+        id: "adr-003",
+        title: "ADR 003: Selection of Game Launcher Tech Stack (Rust + Flutter)", //
+        date: "March 2026", //
+        status: "Accepted", //
+        tags: ["Rust", "Flutter", "Cross-Platform"],
+        context: "Quantum Arcadia requires a standalone cross-platform Game Launcher that handles authentication handoffs, social features, and high-speed binary delta patching to avoid redownloading 20GB game files.", //
+        decision: "Build using a Flutter Frontend connected to a Rust Core via flutter_rust_bridge.", //
+        rationale: [
+            "Ubiquitous Frontend: Flutter allows us to build the UI once and deploy to Windows and Android natively.", //
+            "Systems-Level Performance: Rust's zero-cost abstractions and lack of garbage collection ensure the patching engine (BLAKE3, xdelta3) runs at maximum disk I/O speed.", //
+            "Platform Isolation: Allows us to utilize native intents on Android and avoid bloating the APK with unnecessary binaries." //
+        ]
+    },
+    {
+        id: "adr-004",
+        title: "ADR 004: Selection of Web Portal Tech Stack (Svelte 5 + Cloudflare)", //
+        date: "March 2026", //
+        status: "Accepted", //
+        tags: ["Svelte", "Cloudflare", "Cost-Optimization"],
+        context: "We need a web portal for marketing and identity (FIDO2/WebAuthn). The current Wix solution costs ~$450/month and lacks the programmatic flexibility required for custom cryptographic auth flows.", //
+        decision: "Migrate to Svelte 5 deployed on Cloudflare Pages utilizing adapter-cloudflare.", //
+        rationale: [
+            "Cost Efficiency: Cloudflare Pages provides unlimited free bandwidth and free SSL, eliminating the $450/month overhead.", //
+            "Performance: Svelte compiles to highly optimized vanilla HTML/CSS/JS, providing near-instant load times.", //
+            "Edge Computing: We can securely proxy /api/* requests directly to our AWS Golang backend via Cloudflare Workers with zero cold starts." //
+        ]
+    },
+    {
+        id: "adr-005",
+        title: "ADR 005: Selection of Primary Database (AWS PostgreSQL)", //
+        date: "March 2026", //
+        status: "Accepted", //
+        tags: ["AWS", "PostgreSQL", "Database"],
+        context: "The backend requires a persistent database to store relational identity data alongside highly dynamic, schema-less game data (player inventory). The backend compute services are hosted in AWS.", //
+        decision: "Use Amazon Aurora/RDS PostgreSQL deployed within our AWS VPC.", //
+        rationale: [
+            "Egress Cost Mitigation: Keeping the database inside the same AWS VPC as our Golang compute instances ensures zero-cost internal data transfer.", //
+            "Hybrid Data Structures: PostgreSQL handles relational security logic flawlessly while its JSONB columns allow us to store deeply nested, dynamic game objects without rigid migrations." //
+        ]
+    },
+    {
+        id: "adr-006",
+        title: "ADR 006: Selection of CI/CD Build Orchestration (Jenkins Build Farm)", //
+        date: "March 2026", //
+        status: "Accepted", //
+        tags: ["CI/CD", "Jenkins", "Automation"],
+        context: "Scaling the development team requires strict pipeline automation to prevent bad assets from entering the main branch. We need a feedback loop of <10 minutes for Pull Request validation.", //
+        decision: "Orchestrate a self-hosted Jenkins Pipeline utilizing a local Build Farm paired with a Unity Accelerator on the local network.", //
+        rationale: [
+            "Guaranteed Feedback Loops: Jenkins can instantly reject PRs that violate our Golden Rules (e.g., Triangles > 12,000) using custom build scripts.", //
+            "Cost vs. Scale: Utilizing local high-CPU machines bypasses the per-minute billing of cloud build providers.", //
+            "Unity Accelerator: Placing an Accelerator on the same network caches Asset Imports, cutting checkout-to-build times exponentially." //
+        ]
+    },
+    {
+        id: "adr-007",
+        title: "ADR 007: Selection of Backend Architecture (Golang Modular Monolith)", //
+        date: "March 2026", //
+        status: "Accepted", //
+        tags: ["Golang", "AWS", "WebSockets"],
+        context: "The backend acts as the 'Director', handling both stateless HTTP traffic and highly stateful, long-lived connections. We need an architecture that minimizes latency and prevents operational bloat.", //
+        decision: "Build a Golang Modular Monolith deployed via AWS App Runner (or Fargate).", //
+        rationale: [
+            "Tracer Bullet Philosophy: A single repository drastically accelerates iteration speed for a startup team, avoiding Service Discovery nightmares.", //
+            "Shared Memory Performance: Validating a token via the Identity Service performs in microseconds using shared memory, avoiding the network latency of microservices.", //
+            "Go's lightweight goroutines natively handle massive WebSocket concurrency without needing a specialized language like Erlang." //
+        ]
     }
 ];

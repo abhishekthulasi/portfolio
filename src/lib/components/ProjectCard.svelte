@@ -113,17 +113,23 @@
                                 {#each project.links as link}
                                     <a
                                         href={link.url}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
+                                        target={link.url.startsWith("/")
+                                            ? "_self"
+                                            : "_blank"}
+                                        rel={link.url.startsWith("/")
+                                            ? ""
+                                            : "noopener noreferrer"}
                                         class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors
-                                        bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white hover:bg-gray-200
-                                        dark:hover:bg-gray-700"
+                                         bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white hover:bg-gray-200
+                                          dark:hover:bg-gray-700"
                                     >
-                                        <Icon
-                                            name={link.type === "github"
-                                                ? "github"
-                                                : "external"}
-                                        />
+                                        {#if !link.url.startsWith("/")}
+                                            <Icon
+                                                name={link.type === "github"
+                                                    ? "github"
+                                                    : "external"}
+                                            />
+                                        {/if}
                                         {link.label}
                                     </a>
                                 {/each}
