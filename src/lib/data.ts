@@ -103,7 +103,7 @@ export const projects: Project[] = [
         tech: ['Experience Cloud', 'Apex', 'LWC'],
         tier: 'Scale',
         year: '2024',
-        links: [{ label: 'View Website', url: 'https://bengalurudreamin.com/about-us/', type: 'external' }]
+        links: []
     },
     {
         id: 'muledreamin',
