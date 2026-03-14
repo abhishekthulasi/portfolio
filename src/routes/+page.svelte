@@ -98,7 +98,7 @@
         mainEntity: {
             "@type": "Person",
             name: "Abhishek Thulasi",
-            jobTitle: "Systems Architect",
+            jobTitle: "Systems Architect & Engineer",
             url: "https://abhishekthulasi.com",
             sameAs: [
                 "https://github.com/abhishekthulasi",
@@ -109,7 +109,7 @@
 </script>
 
 <svelte:head>
-    <title>Abhishek Thulasi | Systems Architect</title>
+    <title>Abhishek Thulasi | Systems Architect & Engineer</title>
     <meta
         name="description"
         content="Portfolio of Abhishek Thulasi - Systems, Scale, and Tools."
