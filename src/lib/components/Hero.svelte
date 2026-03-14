@@ -36,13 +36,13 @@
                     class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed space-y-3 border-l-2 border-gray-200 dark:border-gray-800 pl-4"
                 >
                     <p>
-                        If the goal is reliability, I embrace the rigor of <strong
+                        If the goal is raw performance, I optimize at the <strong
                             class="text-gray-700 dark:text-gray-300"
-                            >Rust</strong
+                            >systems level</strong
                         >.
                     </p>
                     <p>
-                        If the goal is velocity, I leverage <strong
+                        If the goal is rapid delivery, I leverage <strong
                             class="text-gray-700 dark:text-gray-300"
                             >Abstractions</strong
                         >.
